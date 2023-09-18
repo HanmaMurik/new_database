@@ -12,7 +12,7 @@ class User(Base):
 
     reg_date = Column(DateTime)
 
-class Questions(Base):
+class Question(Base):
     __tablename__ = 'questions'
     id = Column(Integer, autoincrement=True, primary_key=True)
     q_text = Column(String, nullable=False)
@@ -27,14 +27,17 @@ class Questions(Base):
 class UserAnswer(Base):
     __tablename__ = 'user_answers'
     id = Column(Integer, autoincrement=True, primary_key=True)
+
     user_id = Column(Integer, ForeignKey('users.id'))
     user_answer = Column(Integer)
+
     correctness = Column(Boolean)
+    question_id = Column(Integer, ForeignKey('questions.db'))
 
     answer_date = Column(DateTime)
 
     users_fk = relationship(User)
-
+    question_fk = relationship(Question)
 
 
 

@@ -31,14 +31,27 @@ def get_user_score_db(user_id: int) -> int:
     # Сгенерировать подключение
     db = next(get_db())
     # Делаем проверку
-    checker =  db.query(UserAnswer).filter_by(user_id=user_id, correctness=True).all()
+    checker = db.query(UserAnswer).filter_by(user_id=user_id, correctness=True).all()
 
     if checker:
         return len(checker)
-    else:
-        pass
+    return 0
 
 # вывод лидеров
 def show_leaders_db() -> list:
     # Сгенерировать подключение
     db = next(get_db())
+
+    rating = db.query(UserAnswer).all()
+
+    return rating[:5]
+
+
+
+# Запись результатов
+def add_user_answer_db(user_id, question_id,  user_answer, correctness) -> bool:
+    db = next(get_db())
+    add_answer = UserAnswer(user_id=user_id, question_id= question_id, user_answer=user_answer, correctness=correctness, answer_date=datetime.now())
+    db.add(add_answer)
+    db.commit()
+    return True
