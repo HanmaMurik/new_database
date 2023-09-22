@@ -32,7 +32,7 @@ class UserAnswer(Base):
     user_answer = Column(Integer)
 
     correctness = Column(Boolean)
-    question_id = Column(Integer, ForeignKey('questions.db'))
+    question_id = Column(Integer, ForeignKey('questions.id'))
 
     answer_date = Column(DateTime)
 
@@ -44,7 +44,7 @@ class UserAnswer(Base):
 # Таблица очков
 class Rating(Base):
     __tablename__ = 'ratings'
-    user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'), primary_key=True)
     user_score = Column(Integer, default=0)
 
     user_fk = relationship(User)

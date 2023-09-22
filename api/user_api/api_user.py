@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from database.userservice import register_user_db, get_user_score_db, show_leaders_db
 
 
