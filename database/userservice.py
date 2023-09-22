@@ -16,7 +16,7 @@ def register_user_db(name: str, phone_number: str) -> int:
     # Если нет пользователся в базе. Регестрируем
     else:
         # Регестрируем
-        new_user = User(name=name, phone_number=phone_number, reg_data=datetime.now())
+        new_user = User(name=name, phone_number=phone_number, reg_date=datetime.now())
 
 
         # Добовляем запись в базу
