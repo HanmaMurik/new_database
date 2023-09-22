@@ -41,6 +41,17 @@ class UserAnswer(Base):
 
 
 
+# Таблица очков
+class Rating(Base):
+    __tablename__ = 'ratings'
+    user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
+    user_score = Column(Integer, default=0)
+
+    user_fk = relationship(User)
+
+
+
+
 
 
 

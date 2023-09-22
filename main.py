@@ -15,7 +15,7 @@ async def hello():
 
 # Параметры для запроса
 @app.get('/param-example')
-async def param_example(user_id: int, user_answer:str):
+async def param_example(user_id: int, user_answer: str):
     return {'message': f'У{user_id} 10 ответов {user_answer}'}
 
 # Post
