@@ -8,7 +8,7 @@ test_process_router = APIRouter(prefix='/test', tags=['Процесс прохо
 
 # получить 20 вопросов
 @test_process_router.get('/get-questions')
-async def get_questions(get_20_questions_db):
+async def get_questions():
     result = get_20_questions_db()
 
     if result:
